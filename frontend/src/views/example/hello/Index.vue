@@ -24,7 +24,7 @@
 import { ipc, isEE } from '@/utils/ipcRenderer';
 import { ipcApiRoute } from '@/api/main';
 
-const fs = require('fs-extra')
+const fs = require('fs')
 // import fs from 'fs-extra'
 
 import 'bytemd/dist/index.css'
@@ -115,6 +115,7 @@ export default {
       this.filePath = arg
       // this.fileValue = fs.readFileSync(arg, 'utf8')
       this.fileValue = fs.readFileSync(arg, 'utf8')
+      console.log(this.fileValue)
     })
   },
   methods: {
@@ -135,6 +136,7 @@ export default {
     handleChange(v) {
       // console.log(v)
       if (this.filePath) fs.writeFileSync(this.filePath, v)
+      
       this.fileValue = v
     },
 
